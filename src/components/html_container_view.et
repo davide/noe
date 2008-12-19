@@ -53,6 +53,14 @@
 				</div>
 			</form>
 		</div>
+
+		<script type="text/javascript">
+		$(document).ready(function(){
+			Noe = { };
+			Noe.Global = { };
+			Noe.Global.baseUrl = '<% erlyweb:get_app_root(A) %>';
+		});
+		</script>
 	</body>
 </html>
 

@@ -133,7 +133,7 @@ function jsfy_links(){
 				afterShow : function(){
 					this.getContent().html('Loading...')
 					    .load(
-							'/note/edit/' + id,
+							Noe.Global.baseUrl + '/note/edit/' + id,
 							function(){
 								$(modal_box.getContent()).find('form').ajaxForm(
 									{
@@ -173,7 +173,7 @@ function jsfy_links(){
 				afterShow : function(){
 					this.getContent().html('Loading...')
 					    .load(
-							'/note/delete/' + id,
+							Noe.Global.baseUrl + '/note/delete/' + id,
 							function(){
 								$(modal_box.getContent()).find('form').ajaxForm(
 									{

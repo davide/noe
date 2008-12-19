@@ -1,14 +1,14 @@
-<%@ index(main_menu) %>
+<%@ index(A, main_menu) %>
 
 <ul>
-	<li><a href="/show/all" class="show" id="show_all">Show all</a></li>
-	<li><a href="/show/none" class="show" id="hide_all">Hide all</a></li>
-	<li><a href="/note/add" id="add_note" class="addnote">Add note</a></li>
+	<li><a href="<% erlyweb:get_app_root(A) %>/show/all" class="show" id="show_all">Show all</a></li>
+	<li><a href="<% erlyweb:get_app_root(A) %>/show/none" class="show" id="hide_all">Hide all</a></li>
+	<li><a href="<% erlyweb:get_app_root(A) %>/note/add" id="add_note" class="addnote">Add note</a></li>
 </ul>
 
-<%@ index(secondary_menu) %>
+<%@ index(A, secondary_menu) %>
 
 <ul>
-	<li><a href="/" class="show">Show notes</a></li>
+	<li><a href="<% erlyweb:get_app_root(A) %>/" class="show">Show notes</a></li>
 </ul>
 

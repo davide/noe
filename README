@@ -31,7 +31,7 @@ Additional notes for Git branch "non_root_install"
 This branch implements example code of deploying an erlyweb app running on a path
 different from the default root. There are many components that must work together
 for such an installation to be successful:
- - erlyweb must support it (my fork does: http://github.com/davide/erlyweb/tree/master)
+ - erlyweb must support it (my fork does: http://github.com/davide/erlyweb/tree/non_root_install)
  - the view must get #arg as the first argument and use it to correctly prefix their
    links via erlyweb:get_app_root(A).
  - the javascript code must also determine the app_root in some way

@@ -1,4 +1,4 @@
--module(main_controller).
+-module(noe.main_controller).
 
 -export([index/1]).
 

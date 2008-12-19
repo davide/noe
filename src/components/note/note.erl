@@ -1,1 +1,1 @@
--module(note).
+-module(noe.note).

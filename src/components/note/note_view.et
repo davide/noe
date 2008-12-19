@@ -2,16 +2,16 @@
 <% add_note_form(A) %>
 
 <%@ add(A, {xhr, Note}) %>
-<%? Text = note:text(Note), {ok, Txt} = utf8:from_binary(Text) %>
+<%? Text = note:text(Note), {ok, Txt} = .utf8:from_binary(Text) %>
 <taconite>
 	<prepend select="#content"><![CDATA[
 		<div class="note" id="<% note:field_to_iolist(note:id(Note)) %>">
 			<h2>
 				<% note:title(Note) %>
 				&nbsp;&nbsp;
-				<small><a href="<% erlyweb:get_app_root(A) %>/note/edit/<% note:field_to_iolist(note:id(Note)) %>" class="edit">Edit</a>
+				<small><a href="<% .erlyweb:get_app_root(A) %>/note/edit/<% note:field_to_iolist(note:id(Note)) %>" class="edit">Edit</a>
 				&nbsp;&nbsp;
-				<a href="<% erlyweb:get_app_root(A) %>/note/delete/<% note:field_to_iolist(note:id(Note)) %>" class="delete">Delete</a></small>
+				<a href="<% .erlyweb:get_app_root(A) %>/note/delete/<% note:field_to_iolist(note:id(Note)) %>" class="delete">Delete</a></small>
 			</h2>
 			<div>
 				<% string_utils:nl2br(Txt) %>
@@ -37,7 +37,7 @@ Both title and text cannot be empty
 
 <%@ add_note_form(A) %>
 
-<form action="<% erlyweb:get_app_root(A) %>/note/add" method="post">			
+<form action="<% .erlyweb:get_app_root(A) %>/note/add" method="post">			
 	<div class="frm">
 		<label for="title">Title</label>
 		<input type="text" name="title" id="title" />
@@ -48,7 +48,7 @@ Both title and text cannot be empty
 	</div>
 	<div class="frm">
 		<input type="submit" value="Save" />
-		<a href="<% erlyweb:get_app_root(A) %>/">Cancel</a>
+		<a href="<% .erlyweb:get_app_root(A) %>/">Cancel</a>
 	</div>
 </form>
 
@@ -68,9 +68,9 @@ Both title and text cannot be empty
 			<h2>
 				<% note:title(Note) %>
 				&nbsp;&nbsp;
-				<small><a href="<% erlyweb:get_app_root(A) %>/note/edit/<% note:field_to_iolist(note:id(Note)) %>" class="edit">Edit</a>
+				<small><a href="<% .erlyweb:get_app_root(A) %>/note/edit/<% note:field_to_iolist(note:id(Note)) %>" class="edit">Edit</a>
 				&nbsp;&nbsp;
-				<a href="<% erlyweb:get_app_root(A) %>/note/delete/<% note:field_to_iolist(note:id(Note)) %>" class="delete">Delete</a></small>
+				<a href="<% .erlyweb:get_app_root(A) %>/note/delete/<% note:field_to_iolist(note:id(Note)) %>" class="delete">Delete</a></small>
 			</h2>
 			<div>
 				<% string_utils:nl2br(note:text(Note)) %>
@@ -96,7 +96,7 @@ Both title and text cannot be empty
 
 <%@ edit_note_form(A, Note) %>
 
-<form action="<% erlyweb:get_app_root(A) %>/note/edit/<% note:field_to_iolist(note:id(Note)) %>" method="post">			
+<form action="<% .erlyweb:get_app_root(A) %>/note/edit/<% note:field_to_iolist(note:id(Note)) %>" method="post">			
 	<div class="frm">
 		<label for="title">Title</label>
 		<input type="text" name="title" id="title" value="<% string_utils:htmlize_lite(note:title(Note)) %>" />
@@ -107,7 +107,7 @@ Both title and text cannot be empty
 	</div>
 	<div class="frm">
 		<input type="submit" value="Save" />
-		<a href="<% erlyweb:get_app_root(A) %>/">Cancel</a>
+		<a href="<% .erlyweb:get_app_root(A) %>/">Cancel</a>
 	</div>
 </form>
 
@@ -131,8 +131,8 @@ Both title and text cannot be empty
 <% deletion_form(A, Note) %>
 
 <%@ deletion_form(A, Note) %>
-<form action="<% erlyweb:get_app_root(A) %>/note/delete/<% note:field_to_iolist(note:id(Note)) %>" method="post">
-	<input type="submit" value="Delete" /><a href="<% erlyweb:get_app_root(A) %>/">Cancel</a>
+<form action="<% .erlyweb:get_app_root(A) %>/note/delete/<% note:field_to_iolist(note:id(Note)) %>" method="post">
+	<input type="submit" value="Delete" /><a href="<% .erlyweb:get_app_root(A) %>/">Cancel</a>
 </form>
 		
 <%@ display_note(Note, Cutoff) %>

@@ -1,4 +1,4 @@
--module(html_container_controller).
+-module(noe.html_container_controller).
 -export([private/0, index/3]).
 -include("noe.hrl").
 

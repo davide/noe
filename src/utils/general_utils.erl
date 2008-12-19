@@ -1,4 +1,4 @@
--module(general_utils).
+-module(noe.general_utils).
 -compile(export_all).
 -include("noe.hrl").
 
@@ -11,7 +11,7 @@
 %%
 
 is_xhr(A) ->
-	Headers = yaws_headers:other(A),
+	Headers = .yaws_headers:other(A),
 	Header = get_header(Headers, "HTTP_X_REQUESTED_WITH"),
 	
 	case Header of
@@ -30,14 +30,14 @@ is_xhr(A) ->
 get_header([], _) ->
 	[];
 get_header(L, Header) ->
-	Headers = lists:filter(fun(E) -> case E of {http_header, _, Header, _, Val} -> true; _ -> false end end, L),
+	Headers = .lists:filter(fun(E) -> case E of {http_header, _, Header, _, Val} -> true; _ -> false end end, L),
 	case Headers of
 		[] ->
 			[];
 		[{http_header, _, H, V}] ->
 			V;
 		_ ->
-			lists:flatmap(fun({http_header, _, _, _, V2}) -> V2 end, Headers)
+			.lists:flatmap(fun({http_header, _, _, _, V2}) -> V2 end, Headers)
 	end.
 
 

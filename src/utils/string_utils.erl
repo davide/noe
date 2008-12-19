@@ -1,4 +1,4 @@
--module(string_utils).
+-module(noe.string_utils).
 
 -export([
 	left/2,
@@ -12,30 +12,30 @@
 left(<<>>, _Offset) ->
 	<<>>;
 left(Str, Offset) ->
-	{ok, Str1} = utf8:from_binary(Str),
-	L = lists:sublist(Str1, Offset),
-	{ok, S} = utf8:to_binary(L),
+	{ok, Str1} = .utf8:from_binary(Str),
+	L = .lists:sublist(Str1, Offset),
+	{ok, S} = .utf8:to_binary(L),
 	S.
 	
 right(<<>>, _Offset) ->
 	<<>>;
 right(Str, Offset) ->
-	{ok, Str1} = utf8:from_binary(Str),
-	Length = lists:length(Str1),
+	{ok, Str1} = .utf8:from_binary(Str),
+	Length = .lists:length(Str1),
 	if 
 		Length - Offset < Length -> Str;
 		true ->
-			L = lists:nthtail(Str1, Length-Offset),
-			{ok, S} = utf8:to_binary(L),
+			L = .lists:nthtail(Str1, Length-Offset),
+			{ok, S} = .utf8:to_binary(L),
 			S
 	end.
 
 mid(<<>>, _Start, _Offset) ->
 	<<>>;
 mid(Str, Start, Offset) ->
-	{ok, Str1} = utf8:from_binary(Str),
-	L = lists:sublist(Str1, Start, Offset),
-	{ok, S} = utf8:to_binary(L),
+	{ok, Str1} = .utf8:from_binary(Str),
+	L = .lists:sublist(Str1, Start, Offset),
+	{ok, S} = .utf8:to_binary(L),
 	S.
 
 %%
@@ -45,16 +45,16 @@ ellipses(Text, Offset) when is_list(Text) ->
 	Length = length(Text),
 	if 
 		Length > Offset ->
-			{ok, B} = utf8:to_binary(Text), 
+			{ok, B} = .utf8:to_binary(Text), 
 			B1 = left(B, Offset),
 			<<B1/binary, "&hellip;">>;
 		true ->
-			{ok, T} = utf8:to_binary(Text),
+			{ok, T} = .utf8:to_binary(Text),
 			T
 	end;
 
 ellipses(Text, Offset) when is_binary(Text) ->
-	{ok, L}= utf8:from_binary(Text),
+	{ok, L}= .utf8:from_binary(Text),
 	ellipses(L, Offset).
 	
 %%
@@ -62,11 +62,11 @@ ellipses(Text, Offset) when is_binary(Text) ->
 %%
 
 nl2br(List) when is_list(List) -> 
-	{ok, NewString, _} = regexp:gsub(List, "\r\n|\n|\r", "<br />"),
-	{ok, S} = utf8:to_binary(lists:flatten(NewString)), 
+	{ok, NewString, _} = .regexp:gsub(List, "\r\n|\n|\r", "<br />"),
+	{ok, S} = .utf8:to_binary(.lists:flatten(NewString)), 
 	S; 
 nl2br(List) when is_binary(List) -> 
-	{ok, L} = utf8:from_binary(List), 
+	{ok, L} = .utf8:from_binary(List), 
 	nl2br(L).
 	
 
@@ -79,11 +79,11 @@ nl2br(List) when is_binary(List) ->
 %%
 
 htmlize_lite(List) when is_binary(List) ->
-	{ok, L} = utf8:from_binary(List), 
+	{ok, L} = .utf8:from_binary(List), 
 	htmlize_lite(L);
 htmlize_lite(List) -> 
-	{ok, NewString, _} = regexp:gsub(List, "<", "\\&lt;"),
-	{ok, NewString2, _} = regexp:gsub(NewString, ">", "\\&gt;"),
-	{ok, NewString3, _} = regexp:gsub(NewString2, "\"", "\\&quot;"),
-	{ok, S} = utf8:to_binary(lists:flatten(NewString3)), 
+	{ok, NewString, _} = .regexp:gsub(List, "<", "\\&lt;"),
+	{ok, NewString2, _} = .regexp:gsub(NewString, ">", "\\&gt;"),
+	{ok, NewString3, _} = .regexp:gsub(NewString2, "\"", "\\&quot;"),
+	{ok, S} = .utf8:to_binary(.lists:flatten(NewString3)), 
 	S.

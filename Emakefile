@@ -1,1 +1,1 @@
-{"src/noe.erl", [debug_info, {outdir, "ebin"}]}.
+{"src/boot.erl", [debug_info, {outdir, "ebin"}]}.

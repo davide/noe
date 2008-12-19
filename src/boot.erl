@@ -1,7 +1,7 @@
--module(noe).
+-module(boot).
 -compile(export_all).
 -include("noe.hrl").
--include("noe_app.hrl").
+-include("app.hrl").
 
 start() ->
     process_flag(trap_exit, true),

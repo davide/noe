@@ -25,3 +25,17 @@ This will:
 		runmod = noe
 
 8. You can now open up your browser and navigate to http://noe/
+
+
+Additional notes for Git branch "non_root_install"
+This branch implements example code of deploying an erlyweb app running on a path
+different from the default root. There are many components that must work together
+for such an installation to be successful:
+ - erlyweb must support it (my fork does: http://github.com/davide/erlyweb/tree/master)
+ - the view must get #arg as the first argument and use it to correctly prefix their
+   links via erlyweb:get_app_root(A).
+ - the javascript code must also determine the app_root in some way
+	- this is currently broken (will welcome code to fix it!)
+
+That's about it! Enjoy!
+Davide :)

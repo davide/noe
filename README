@@ -34,8 +34,8 @@ for such an installation to be successful:
  - erlyweb must support it (my fork does: http://github.com/davide/erlyweb/tree/non_root_install)
  - the view must get #arg as the first argument and use it to correctly prefix their
    links via erlyweb:get_app_root(A).
- - the javascript code must also determine the app_root in some way
-	- this is currently broken (will welcome code to fix it!)
+ - the javascript code must get hold of the app_root in order to build correct links
+   (currently this is done using an object (Noe) in the global namespace)
 
 That's about it! Enjoy!
 Davide :)

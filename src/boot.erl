@@ -20,15 +20,17 @@ start_phase(compile, _Type, _Args) ->
     ok.
 
 mysql_connect(Hostname, User, Password, Database, PoolSize) ->
+    PoolId = noe,
     .erlydb:start(
       mysql, [{hostname, Hostname},
 	      {username, User},
 	      {password, Password},
 	      {database, Database},
+	      {poolid, PoolId},
 	      {logfun, fun log/4}]),
     .lists:foreach(
       fun(_PoolNumber) ->
-	      .mysql:connect(erlydb_mysql, Hostname, undefined, User, Password,
+	      .mysql:connect(PoolId, Hostname, undefined, User, Password,
 			    Database, true)
       end, .lists:seq(1, PoolSize)).
 

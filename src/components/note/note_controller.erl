@@ -1,13 +1,14 @@
 -module(noe.note_controller).
 
--include("noe.hrl").
-
+-import(yaws_arg).
 
 -export([
 	add/1,
 	edit/2,
 	delete/2
 ]).
+
+-include("noe.hrl").
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                     %%%
@@ -31,7 +32,7 @@
 add(A) ->
 	Xhr = general_utils:is_xhr(A),
 	
-	case .yaws_arg:method(A) of
+	case yaws_arg:method(A) of
 		'GET' ->
 			{data, html};
 		'POST' ->
@@ -80,7 +81,7 @@ edit(A, ID) ->
 		[] ->
 			ewr;
 		[Note] ->
-			case .yaws_arg:method(A) of
+			case yaws_arg:method(A) of
 				'GET' ->
 					case Xhr of
 						true ->
@@ -134,7 +135,7 @@ delete(A, ID) ->
 		[] ->
 			ewr;
 		[Note] ->
-			case .yaws_arg:method(A) of
+			case yaws_arg:method(A) of
 				'GET' ->
 					case Xhr of
 						true ->

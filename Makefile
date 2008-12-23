@@ -5,7 +5,7 @@ code: clean
 
 run:	code
 	erl -noshell -eval 'filelib:ensure_dir("./log/").' -pa ebin -s erlang halt
-	erl -yaws debug -run yaws --conf yaws.conf -yaws id noe.webserver
+	erl -run yaws -yaws debug -conf yaws.conf
 
 clean:
 	rm -fv ebin/*.beam ebin/noe/*.beam log/* noe.rel noe.script noe.boot erl_crash.dump *.log *.access
